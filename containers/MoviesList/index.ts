@@ -1,0 +1,1 @@
+export { MoviesListPropType } from "./enhance";

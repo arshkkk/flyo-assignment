@@ -12,4 +12,5 @@ export interface MovieType {
   released_on: string;
   slug: string;
   title: string;
+  isLiked?: boolean;
 }

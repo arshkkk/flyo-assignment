@@ -1,5 +1,5 @@
 import { DefaultActionType } from "../../types/common";
-import { GET_MOVIES } from "../actions/movieActions";
+import { GET_MOVIES, likeMovie, MOVIE_ACTIONS } from "../actions/movieActions";
 import { MovieType } from "../../types/movie";
 
 export interface MovieReducerStateType {
@@ -24,12 +24,37 @@ export const movieReducer = (
     case GET_MOVIES.INITIATE:
       return { ...state, isLoading: true, error: undefined };
     case GET_MOVIES.SUCCESS:
-      const { movies } = payload;
-      console.log(movies.length);
+      let { movies } = payload;
+      movies = movies.map((movie: MovieType) => ({ ...movie, isLiked: false }));
       return { ...state, isLoading: false, movies, error: undefined };
     case GET_MOVIES.ERROR:
       const { error } = payload;
       return { ...state, isLoading: false, error: error.message };
+
+    // MOVIE ACTION
+    case MOVIE_ACTIONS.LIKE:
+      const { id } = payload;
+      console.log("new starting");
+      return {
+        ...state,
+        movies: state.movies.map((movie: MovieType) => {
+          console.log(movie.isLiked);
+          if (movie.id === id) {
+            return { ...movie, isLiked: true };
+          } else return movie;
+        }),
+      };
+
+    case MOVIE_ACTIONS.UNLIKE:
+      const { id: movieId } = payload;
+      return {
+        ...state,
+        movies: state.movies.map((movie: MovieType) => {
+          if (movie.id === movieId) return { ...movie, isLiked: false };
+          else return movie;
+        }),
+      };
+
     default:
       return state;
   }

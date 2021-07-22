@@ -1,7 +1,11 @@
-import React from 'react';
-import { ActivityIndicator, ButtonProps } from 'react-native';
-import { CustomButtonWrapper, CustomButtonText } from './Button.styles';
-import { COLORS } from '../../theme/colors';
+import React from "react";
+import {
+  ActivityIndicator,
+  ButtonProps,
+  TouchableOpacityComponent,
+  Text,
+} from "react-native";
+import { COLORS } from "../../theme/colors";
 
 interface CustomButtonPropType extends ButtonProps {
   isLoading?: boolean;
@@ -13,15 +17,16 @@ export const Button = ({
   onPress,
   ...props
 }: CustomButtonPropType) => (
-  <CustomButtonWrapper
+  <TouchableOpacityComponent
     onPressIn={onPress}
     {...props}
     disabled={props.disabled || isLoading}
+    style={{ backgroundColor: "green", padding: 100 }}
   >
     {isLoading ? (
       <ActivityIndicator size="small" color={COLORS.WHITE} />
     ) : (
-      <CustomButtonText>{title}</CustomButtonText>
+      <Text>{title}</Text>
     )}
-  </CustomButtonWrapper>
+  </TouchableOpacityComponent>
 );
