@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   ListRenderItemInfo,
+  TouchableWithoutFeedback,
 } from "react-native";
 
 import Carousel from "react-native-snap-carousel";
@@ -48,7 +49,7 @@ export default class MovieCarasoul extends React.Component<
     goTo: (id: string) => void;
   }) {
     return (
-      <TouchableHighlight key={item.id} onPress={() => goTo(item.id)}>
+      <TouchableWithoutFeedback key={item.id} onPress={() => goTo(item.id)}>
         <View
           key={item.id}
           style={{
@@ -74,7 +75,7 @@ export default class MovieCarasoul extends React.Component<
             IMDB: <Rating imdb_rating={item.imdb_rating} />
           </Text>
         </View>
-      </TouchableHighlight>
+      </TouchableWithoutFeedback>
     );
   }
   goTo = (id: string) => {
@@ -87,7 +88,8 @@ export default class MovieCarasoul extends React.Component<
           flex: 1,
           width: "100%",
           backgroundColor: "rgba(0,0,0,0.85)",
-          paddingTop: 50,
+          paddingTop: 10,
+          paddingBottom: 90,
         }}
       >
         <Text

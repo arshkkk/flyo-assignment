@@ -30,8 +30,8 @@ export const MovieDetailComponent = ({
   );
   if (!movie) return null;
   return (
-    <View style={{ paddingBottom: 85 }}>
-      <ScrollView>
+    <ScrollView>
+      <View style={{ paddingBottom: 90 }}>
         <View style={[styles.posterContainer, styles.shadow]}>
           <Image
             source={{ uri: movie?.backdrop }}
@@ -96,8 +96,8 @@ export const MovieDetailComponent = ({
             />
           </View>
         </View>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 

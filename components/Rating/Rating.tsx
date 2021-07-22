@@ -10,7 +10,7 @@ export const Rating = ({ imdb_rating }: { imdb_rating: number }) => (
         style={{ height: 15, width: 15 }}
       />
     ))}
-    {imdb_rating - Math.floor(imdb_rating / 2) > 0.5 && (
+    {imdb_rating / 2 - Math.floor(imdb_rating / 2) >= 0.5 && (
       <Image
         source={require("../../assets/icons/half-star.png")}
         style={{ height: 15, width: 15 }}

@@ -43,7 +43,6 @@ export const MoviesListComponent = ({
       style={{
         width: "100%",
         backgroundColor: "rgba(0,0,0,1)",
-        paddingBottom: 90,
       }}
     >
       <FlatList<MovieCarasoulPropType>

@@ -19,7 +19,6 @@ export const movieReducer = (
   state: MovieReducerStateType = initialState,
   { type, payload }: DefaultActionType
 ): MovieReducerStateType => {
-  console.log(type);
   switch (type) {
     case GET_MOVIES.INITIATE:
       return { ...state, isLoading: true, error: undefined };
@@ -34,11 +33,9 @@ export const movieReducer = (
     // MOVIE ACTION
     case MOVIE_ACTIONS.LIKE:
       const { id } = payload;
-      console.log("new starting");
       return {
         ...state,
         movies: state.movies.map((movie: MovieType) => {
-          console.log(movie.isLiked);
           if (movie.id === id) {
             return { ...movie, isLiked: true };
           } else return movie;
